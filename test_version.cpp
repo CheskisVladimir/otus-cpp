@@ -14,7 +14,7 @@ BOOST_AUTO_TEST_CASE(test_valid_version1) {
 	BOOST_CHECK(1 == 1);
 }
 
-BOOST_AUTO_TEST_CASE(test_valid_version2 {
+BOOST_AUTO_TEST_CASE(test_valid_version2) {
 	BOOST_CHECK(1 == 1);
 }
 
