@@ -12,6 +12,13 @@ configure_file(version.h.in version.h)
 add_executable(helloworld_cli main.cpp)
 add_library(helloworld lib.cpp)
 
+set(sources
+    ${public_headers}
+    SimpleSort/ip_filter.cpp
+    SimpleSort/ip_lib.cpp
+    SimpleSort/ip_io.cpp)
+#add_library(SimpleSort/ip_filter.cpp)
+
 set_target_properties(helloworld_cli helloworld PROPERTIES
     CXX_STANDARD 14
     CXX_STANDARD_REQUIRED ON
