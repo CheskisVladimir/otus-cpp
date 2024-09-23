@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - master
+      - IpSort
       - feature/github_actions
 
 jobs:
