@@ -5,6 +5,7 @@ using namespace ip_lib;
 
 int main (int, char **) {
     
+    std::cout << "Hi"<<std::endl;
 
     return 0; 
 
