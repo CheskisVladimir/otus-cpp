@@ -46,6 +46,33 @@ TEST(TestGroupName, test_process)
     ASSERT_EQ(processed, 2);
 }
 
+TEST(TestGroupName, test_parse)
+{
+    // ip_optional_t parse(const std::vector<std::string> &byte_strings);
+
+    bool ok = false;
+    ip_t ip;
+
+    std::vector<std::string> too_many{"1", "2", "3", "4", "5"};
+    std::tie(ok, ip) = parse(too_many);
+    ASSERT_FALSE(ok);
+
+    std::vector<std::string> invalid{"a", "2", "3", "4"};
+    std::tie(ok, ip) = parse(too_many);
+    ASSERT_FALSE(ok);
+
+    std::vector<std::string> large{"500", "2", "3", "4"};
+    std::tie(ok, ip) = parse(too_many);
+    ASSERT_FALSE(ok);
+
+    std::vector<std::string> valid{"255", "100", "1", "2"};
+    std::tie(ok, ip) = parse(valid);
+    ASSERT_TRUE(ok);
+
+    ip_t eq {255, 100, 1, 2};
+    ASSERT_EQ(ip, eq);
+}
+
 int main(int argc, char **argv)
 {
     ::testing::InitGoogleTest(&argc, argv);
