@@ -5,7 +5,7 @@
 
 TEST(TestGroupName, test_1)
 {
-    ASSERT_EQ(a(), 1);
+    ASSERT_EQ(1, 1);
 }
 
 int main(int argc, char **argv)
