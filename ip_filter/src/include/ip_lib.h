@@ -19,7 +19,7 @@ namespace ip_lib
             : bytes{byte0, byte1, byte2, byte3}
         {
         }
-        [[maybe_unused]] bool operator==(const ip_t &other) const;
+        bool operator==(const ip_t &other) const;
     };
 
     using ip_optional_t = std::tuple<bool, ip_t>;
@@ -34,12 +34,12 @@ namespace ip_lib
         inverted
     };
 
-    [[maybe_unused]] void process(const std::vector<ip_t> &ip_vector, const ip_proc_t &proc);
-    [[maybe_unused]] void sort_ip_vector(std::vector<ip_t> &ip_vector, sort_order_t order);
+    void process(const std::vector<ip_t> &ip_vector, const ip_proc_t &proc);
+    void sort_ip_vector(std::vector<ip_t> &ip_vector, sort_order_t order);
 
     // input-output
-    [[maybe_unused]] ip_optional_t parse(const std::vector<std::string> &byte_strings);
-    [[maybe_unused]] void print(const ip_t &ip);
-    [[maybe_unused]] void print(const std::vector<ip_t> &ip_vector);
+    ip_optional_t parse(const std::vector<std::string> &byte_strings);
+    void print(const ip_t &ip);
+    void print(const std::vector<ip_t> &ip_vector);
 
 }
