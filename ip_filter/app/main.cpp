@@ -12,6 +12,7 @@ int ip_main();
 
 namespace ip_lib
 {
+    // Splits the string to a vector with the given ddelimiter d
     std::vector<std::string> split(const std::string &str, char d)
     {
         std::vector<std::string> r;
@@ -31,6 +32,7 @@ namespace ip_lib
         return r;
     }
 
+    // Loads the data
     std::vector<ip_t> load()
     {
         using namespace std;
