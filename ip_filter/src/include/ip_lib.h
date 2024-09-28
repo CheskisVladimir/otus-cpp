@@ -34,6 +34,12 @@ namespace ip_lib
         inverted
     };
 
-    [[maybe_unused]]void process(const std::vector<ip_t> &ip_vector, const ip_proc_t &proc);
-    [[maybe_unused]]void sort_ip_vector(std::vector<ip_t> &ip_vector, sort_order_t order);
+    [[maybe_unused]] void process(const std::vector<ip_t> &ip_vector, const ip_proc_t &proc);
+    [[maybe_unused]] void sort_ip_vector(std::vector<ip_t> &ip_vector, sort_order_t order);
+
+    // input-output
+    [[maybe_unused]] ip_optional_t parse(const std::vector<std::string> &byte_strings);
+    [[maybe_unused]] void print(const ip_t &ip);
+    [[maybe_unused]] void print(const std::vector<ip_t> &ip_vector);
+
 }
