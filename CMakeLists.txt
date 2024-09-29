@@ -23,17 +23,27 @@ target_include_directories(ip_library PUBLIC ip_filter_lib_folder/src/include)
 
 add_library(ip_filter_lib lib.cpp)
 
+add_library(ip_library_main ${LIB_SOURCES} lib.cpp ip_lib_main.cpp)
+target_include_directories(ip_library_main PUBLIC ip_filter_lib_folder/src/include)
+
+
 set_target_properties(ip_filter ip_filter_lib PROPERTIES
     CXX_STANDARD 14
     CXX_STANDARD_REQUIRED ON
 )
 
-target_include_directories(ip_filter_lib
+set_target_properties(ip_filter ip_library_main PROPERTIES
+    CXX_STANDARD 14
+    CXX_STANDARD_REQUIRED ON
+)
+
+
+target_include_directories(ip_library_main
     PRIVATE "${CMAKE_BINARY_DIR}"
 )
 
 target_link_libraries(ip_filter PRIVATE
-    ip_filter_lib
+ip_library_main
 )
 
 if(WITH_BOOST_TEST)
