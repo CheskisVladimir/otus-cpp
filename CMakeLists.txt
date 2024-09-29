@@ -5,7 +5,8 @@ set(PROJECT_VESRION 0.0.${PATCH_VERSION})
 
 project(ip_filter VERSION ${PROJECT_VESRION})
 
-option(WITH_BOOST_TEST "Whether to build Boost test" ON)
+option(WITH_BOOST_TEST "Whether to build Boost test" OFF)
+option(WITH_GOOGLE_TEST "Whether to build Google test" ON)
 
 configure_file(version.h.in version.h)
 
@@ -94,3 +95,27 @@ if(WITH_BOOST_TEST)
     enable_testing()
     add_test(test_version test_version)
 endif()
+
+if(WITH_GOOGLE_TEST)
+# Настройка Google Test (предполагается, что у вас установлен gtest)
+enable_testing()
+find_package(GTest REQUIRED)
+include_directories(${GTEST_INCLUDE_DIRS})
+
+# Добавление тестов
+file(GLOB TEST_SOURCES ip_filter/tests/*.cpp)
+add_executable(ip_tests ip_filter/tests/test_api_lib.cpp)
+target_link_libraries(ip_tests ip_filter_lib ${GTEST_LIBRARIES})
+
+# Регистрация тестов
+add_test(NAME IPLibTests COMMAND ip_tests)
+
+# Автоматическое добавление файлов в библиотеку
+target_sources(ip_filter_lib PRIVATE ${LIB_SOURCES} ${LIB_HEADERS})
+
+set_target_properties(ip_filter_cli ip_tests PROPERTIES
+    CXX_STANDARD 17
+    CXX_STANDARD_REQUIRED ON
+)
+endif()
+

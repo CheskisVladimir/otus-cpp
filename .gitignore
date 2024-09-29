@@ -57,3 +57,4 @@ test/test_runner
 *_cli
 test_version
 version.h
+ip_tests
