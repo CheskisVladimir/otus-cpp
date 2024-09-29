@@ -1,6 +1,7 @@
 
 #include <iostream>
-#include "../include/ip_lib.h"
+
+#include "ip_filter_lib_folder/src/include/ip_lib.h"
 
 namespace ip_lib
 {
@@ -54,6 +55,7 @@ namespace ip_lib
         try
         {
             std::vector<ip_t> ip_pool = load();
+            ip_lib::sort_ip_vector(ip_pool, sort_order_t::inverted);
 
             auto cekck_all = [](const ip_t &)
             {
@@ -68,9 +70,7 @@ namespace ip_lib
                     [](const ip_t &ip)
                     { print(ip); });
 
-                std::vector<ip_t> ip_pool_to_sort = ip_pool;
-                ip_lib::sort_ip_vector(ip_pool_to_sort, sort_order_t::inverted);
-                process(ip_pool_to_sort, proc);
+                process(ip_pool, proc);
             }
 
             ip_proc_t proc_byte_1(
