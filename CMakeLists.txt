@@ -11,7 +11,7 @@ set(CMAKE_CXX_STANDARD 17)
 file(GLOB_RECURSE LIB_SOURCES ip_filter/src/cpp/*.cpp)
 file(GLOB_RECURSE LIB_HEADERS ip_filter/src/include/*.h)
 
-add_library(ip_library ${LIB_SOURCES})
+add_library(ip_library ${LIB_SOURCES} lib.cpp)
 target_include_directories(ip_library PUBLIC ip_filter/src/include)
 
 # Основная программа
