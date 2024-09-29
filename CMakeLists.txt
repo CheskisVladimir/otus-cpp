@@ -10,19 +10,29 @@ option(WITH_BOOST_TEST "Whether to build Boost test" ON)
 configure_file(version.h.in version.h)
 
 add_executable(ip_filter_cli main.cpp)
-add_library(helloworld lib.cpp)
 
-set_target_properties(ip_filter_cli helloworld PROPERTIES
+#add_library(helloworld lib.cpp)
+
+# Параметры для библиотеки
+file(GLOB_RECURSE LIB_SOURCES ip_filter/src/cpp/*.cpp)
+file(GLOB_RECURSE LIB_HEADERS ip_filter/src/include/*.h)
+
+add_library(ip_library ${LIB_SOURCES} lib.cpp)
+target_include_directories(ip_library PUBLIC src/include)
+
+add_library(ip_filter_lib lib.cpp)
+
+set_target_properties(ip_filter_cli ip_filter_lib PROPERTIES
     CXX_STANDARD 14
     CXX_STANDARD_REQUIRED ON
 )
 
-target_include_directories(helloworld
+target_include_directories(ip_filter_lib
     PRIVATE "${CMAKE_BINARY_DIR}"
 )
 
 target_link_libraries(ip_filter_cli PRIVATE
-    helloworld
+    ip_filter_lib
 )
 
 if(WITH_BOOST_TEST)
@@ -41,7 +51,7 @@ if(WITH_BOOST_TEST)
 
     target_link_libraries(test_version
         ${Boost_LIBRARIES}
-        helloworld
+        ip_filter_lib
     )
 endif()
 
@@ -49,7 +59,7 @@ if (MSVC)
     target_compile_options(ip_filter_cli PRIVATE
         /W4
     )
-    target_compile_options(helloworld PRIVATE
+    target_compile_options(ip_filter_lib PRIVATE
         /W4
     )
     if(WITH_BOOST_TEST)
@@ -61,7 +71,7 @@ else ()
     target_compile_options(ip_filter_cli PRIVATE
         -Wall -Wextra -pedantic -Werror
     )
-    target_compile_options(helloworld PRIVATE
+    target_compile_options(ip_filter_lib PRIVATE
         -Wall -Wextra -pedantic -Werror
     )
     if(WITH_BOOST_TEST)
