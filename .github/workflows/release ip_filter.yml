@@ -13,7 +13,8 @@ jobs:
       - uses: actions/checkout@v2
         with:
           submodules: true
-      - run: cmake ip_filter -DPATCH_VERSION=${{ github.run_number }} -DWITH_BOOST_TEST=ON -B ip_filter
+      - run: sudo apt-get update && sudo apt-get install sudo apt-get install libgtest-dev 
+      - run: cmake ip_filter -DPATCH_VERSION=${{ github.run_number }} -B ip_filter
       - run: cmake --build ip_filter
       - run: cmake --build ip_filter --target test
       - run: cmake --build ip_filter --target package
