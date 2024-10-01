@@ -41,29 +41,12 @@ namespace ip_lib
 
     void sort_ip_vector(std::vector<ip_t> &ip_vector, sort_order_t order)
     {
-        auto less = [order](const ip_t &a, const ip_t &b) -> bool
-        {
-            bool a_is_less = false;
-            bool b_is_less = false;
-            for (size_t i = 0; i < 4; i++)
-            {
-                if (a.bytes[i] < b.bytes[i])
-                {
-                    a_is_less = true;
-                    break;
-                }
-                if (a.bytes[i] > b.bytes[i])
-                {
-                    b_is_less = true;
-                    break;
-                }
-            }
-            if (!b_is_less && !a_is_less)
-                return false;
-            return order == sort_order_t::normal ? a_is_less : b_is_less;
-        };
-
-        std::sort(ip_vector.begin(), ip_vector.end(), less);
+        // I'm not sure that it's a good idea, but tests works) 
+        std::uint32_t *ip_index_in_1_number = reinterpret_cast<std::uint32_t *>(ip_vector.data());
+        if (order == sort_order_t::inverted)
+            std::sort(ip_index_in_1_number, ip_index_in_1_number + ip_vector.size(), std::greater<uint32_t>());
+        else
+            std::sort(ip_index_in_1_number, ip_index_in_1_number + ip_vector.size());
     }
 
 } // namespace ip_lib
