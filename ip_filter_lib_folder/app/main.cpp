@@ -7,9 +7,6 @@ namespace ip_lib
 int ip_main();
 }
 
-#include <iostream>
-#include "../src/include/ip_lib.h"
-
 namespace ip_lib
 {
     // Splits the string to a vector with the given ddelimiter d
