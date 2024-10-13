@@ -72,10 +72,3 @@ TEST(TestGroupName, test_parse)
     ip_t eq {255, 100, 1, 2};
     ASSERT_EQ(ip, eq);
 }
-
-int main(int argc, char **argv)
-{
-    ::testing::InitGoogleTest(&argc, argv);
-
-    return RUN_ALL_TESTS();
-}

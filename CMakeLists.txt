@@ -4,12 +4,9 @@ set(APPLICATION ip_filter)
 
 set(LIBLARY ${APPLICATION}_library)
 set(LIBLARY_FOLDER ${APPLICATION}_lib_folder)
-set(TEST_APPLICATION ${APPLICATION}_tests)
 
 file(GLOB_RECURSE LIB_SOURCES ${LIBLARY_FOLDER}/src/cpp/*.cpp)
 file(GLOB_RECURSE LIB_HEADERS ${LIBLARY_FOLDER}/src/include/*.h)
-file(GLOB_RECURSE LIB_TESTS ${LIBLARY_FOLDER}/tests/*.cpp)
-file(GLOB_RECURSE TEST_APPLICATION_MAIN ${LIBLARY_FOLDER}/tests/test_api_lib.cpp)
 
 # There is a function for colling from application's main 
 set(LIBLARY_MAIN ${APPLICATION}_library_main)
@@ -121,14 +118,19 @@ enable_testing()
 find_package(GTest REQUIRED)
 include_directories(${GTEST_INCLUDE_DIRS})
 
+
 #Add Tests
-add_executable(${TEST_APPLICATION} ${TEST_APPLICATION_MAIN})
+set(TEST_APPLICATION ${APPLICATION}_Tests)
+file(GLOB TEST_SOURCES ${LIBLARY_FOLDER}/tests/*.cpp)
+file(GLOB TEST_APPLICATION_MAIN_FILE ${LIBLARY_FOLDER}/tests/tests_main.cpp)
+
+add_executable(${TEST_APPLICATION} ${LIBLARY_FOLDER}/tests/tests_main.cpp)
 target_link_libraries(${TEST_APPLICATION} ${LIBLARY} ${GTEST_LIBRARIES})
 
 # Регистрация тестов
 add_test(NAME IPLibTests COMMAND ${TEST_APPLICATION})
 
-target_sources(${LIBLARY} PRIVATE ${LIB_SOURCES} ${LIB_HEADERS})
+#target_sources(${LIBLARY} PRIVATE ${LIB_SOURCES} ${LIB_HEADERS})
 
 set_target_properties(${APPLICATION} ${TESTS} PROPERTIES
     CXX_STANDARD 17
