@@ -1,49 +1,58 @@
 cmake_minimum_required(VERSION 3.12)
 
+set(APPLICATION ip_filter)
+
+set(LIBLARY ${APPLICATION}_library)
+set(LIBLARY_FOLDER ${APPLICATION}_lib_folder)
+set(TEST_APPLICATION ${APPLICATION}_tests)
+
+file(GLOB_RECURSE LIB_SOURCES ${LIBLARY_FOLDER}/src/cpp/*.cpp)
+file(GLOB_RECURSE LIB_HEADERS ${LIBLARY_FOLDER}/src/include/*.h)
+file(GLOB_RECURSE LIB_TESTS ${LIBLARY_FOLDER}/tests/*.cpp)
+file(GLOB_RECURSE TEST_APPLICATION_MAIN ${LIBLARY_FOLDER}/tests/test_api_lib.cpp)
+
+# There is a function for colling from application's main 
+set(LIBLARY_MAIN ${APPLICATION}_library_main)
+file(GLOB_RECURSE LIBRARY_MAIN_FILE ${APPLICATION}_lib_main.cpp)
+
+
 set(PATCH_VERSION "1" CACHE INTERNAL "Patch version")
 set(PROJECT_VESRION 0.0.${PATCH_VERSION})
 
-project(ip_filter VERSION ${PROJECT_VESRION})
+project(${APPLICATION} VERSION ${PROJECT_VESRION})
 
 option(WITH_BOOST_TEST "Whether to build Boost test" ON)
 option(WITH_GOOGLE_TEST "Whether to build Google test" ON)
 
 configure_file(version.h.in version.h)
 
-add_executable(ip_filter main.cpp)
-
-#add_library(helloworld lib.cpp)
-
-# Параметры для библиотеки
-file(GLOB_RECURSE LIB_SOURCES ip_filter_lib_folder/src/cpp/*.cpp)
-file(GLOB_RECURSE LIB_HEADERS ip_filter_lib_folder/src/include/*.h)
-
-add_library(ip_library ${LIB_SOURCES} lib.cpp)
-target_include_directories(ip_library PUBLIC ip_filter_lib_folder/src/include)
-
-add_library(ip_filter_lib lib.cpp)
-
-add_library(ip_library_main ${LIB_SOURCES} lib.cpp ip_lib_main.cpp)
-target_include_directories(ip_library_main PUBLIC ip_filter_lib_folder/src/include)
+add_executable(${APPLICATION} main.cpp)
 
 
-set_target_properties(ip_filter ip_filter_lib PROPERTIES
-    CXX_STANDARD 14
+add_library(${LIBLARY} ${LIB_SOURCES} lib.cpp)
+target_include_directories(${LIBLARY} PUBLIC ${LIBLARY_FOLDER}/src/include)
+
+add_library(${LIBLARY_MAIN} ${LIB_SOURCES} lib.cpp ${LIBRARY_MAIN_FILE})
+target_include_directories(${LIBLARY_MAIN} PUBLIC ${LIBLARY_FOLDER}/src/include)
+
+
+set_target_properties(${APPLICATION} ${LIBLARY} PROPERTIES
+    CXX_STANDARD 17
     CXX_STANDARD_REQUIRED ON
 )
 
-set_target_properties(ip_filter ip_library_main PROPERTIES
-    CXX_STANDARD 14
+set_target_properties(${APPLICATION} ${LIBLARY} PROPERTIES
+    CXX_STANDARD 17
     CXX_STANDARD_REQUIRED ON
 )
 
 
-target_include_directories(ip_library_main
+target_include_directories(${LIBLARY_MAIN}
     PRIVATE "${CMAKE_BINARY_DIR}"
 )
 
-target_link_libraries(ip_filter PRIVATE
-ip_library_main
+target_link_libraries(${APPLICATION} PRIVATE
+${LIBLARY_MAIN}
 )
 
 if(WITH_BOOST_TEST)
@@ -62,15 +71,15 @@ if(WITH_BOOST_TEST)
 
     target_link_libraries(test_version
         ${Boost_LIBRARIES}
-        ip_filter_lib
+        ${LIBLARY}
     )
 endif()
 
 if (MSVC)
-    target_compile_options(ip_filter PRIVATE
+    target_compile_options(${APPLICATION} PRIVATE
         /W4
     )
-    target_compile_options(ip_filter_lib PRIVATE
+    target_compile_options(${LIBLARY} PRIVATE
         /W4
     )
     if(WITH_BOOST_TEST)
@@ -79,10 +88,10 @@ if (MSVC)
         )
     endif()
 else ()
-    target_compile_options(ip_filter PRIVATE
+    target_compile_options(${APPLICATION} PRIVATE
         -Wall -Wextra -pedantic -Werror
     )
-    target_compile_options(ip_filter_lib PRIVATE
+    target_compile_options(${LIBLARY} PRIVATE
         -Wall -Wextra -pedantic -Werror
     )
     if(WITH_BOOST_TEST)
@@ -92,7 +101,7 @@ else ()
     endif()
 endif()
 
-install(TARGETS ip_filter RUNTIME DESTINATION bin)
+install(TARGETS ${APPLICATION} RUNTIME DESTINATION bin)
 
 set(CPACK_GENERATOR DEB)
 set(CPACK_PACKAGE_VERSION_MAJOR "${PROJECT_VERSION_MAJOR}")
@@ -112,18 +121,16 @@ enable_testing()
 find_package(GTest REQUIRED)
 include_directories(${GTEST_INCLUDE_DIRS})
 
-# Добавление тестов
-file(GLOB TEST_SOURCES ip_filter_lib_folder/tests/*.cpp)
-add_executable(ip_tests ip_filter_lib_folder/tests/test_api_lib.cpp)
-target_link_libraries(ip_tests ip_filter_lib ${GTEST_LIBRARIES})
+#Add Tests
+add_executable(${TEST_APPLICATION} ${TEST_APPLICATION_MAIN})
+target_link_libraries(${TEST_APPLICATION} ${LIBLARY} ${GTEST_LIBRARIES})
 
 # Регистрация тестов
-add_test(NAME IPLibTests COMMAND ip_tests)
+add_test(NAME IPLibTests COMMAND ${TEST_APPLICATION})
 
-# Автоматическое добавление файлов в библиотеку
-target_sources(ip_filter_lib PRIVATE ${LIB_SOURCES} ${LIB_HEADERS})
+target_sources(${LIBLARY} PRIVATE ${LIB_SOURCES} ${LIB_HEADERS})
 
-set_target_properties(ip_filter ip_tests PROPERTIES
+set_target_properties(${APPLICATION} ${TESTS} PROPERTIES
     CXX_STANDARD 17
     CXX_STANDARD_REQUIRED ON
 )
