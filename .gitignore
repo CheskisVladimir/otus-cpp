@@ -58,3 +58,5 @@ test/test_runner
 test_version
 version.h
 ip_tests
+*.json
+/ip_filter_Tests

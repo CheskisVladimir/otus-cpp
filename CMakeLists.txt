@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.12)
 
-set(APPLICATION ip_filter)
+set(APPLICATION allocator_and_map)
 
 set(LIBLARY ${APPLICATION}_library)
 set(LIBLARY_FOLDER ${APPLICATION}_lib_folder)
@@ -120,12 +120,16 @@ include_directories(${GTEST_INCLUDE_DIRS})
 
 
 #Add Tests
-set(TEST_APPLICATION ${APPLICATION}_Tests)
+set(TEST_APPLICATION ${APPLICATION}_tests)
 file(GLOB TEST_SOURCES ${LIBLARY_FOLDER}/tests/*.cpp)
 file(GLOB TEST_APPLICATION_MAIN_FILE ${LIBLARY_FOLDER}/tests/tests_main.cpp)
 
-add_executable(${TEST_APPLICATION} ${LIBLARY_FOLDER}/tests/tests_main.cpp)
-target_link_libraries(${TEST_APPLICATION} ${LIBLARY} ${GTEST_LIBRARIES})
+set(TEST_LIB_NAME ${APPLICATION}_tests_lib)
+
+add_executable(${TEST_APPLICATION} ${TEST_APPLICATION_MAIN_FILE})
+add_library(${APPLICATION}_tests_lib ${TEST_SOURCES})
+
+target_link_libraries(${TEST_APPLICATION} ${LIBLARY} ${GTEST_LIBRARIES} ${TEST_LIB_NAME})
 
 # Регистрация тестов
 add_test(NAME IPLibTests COMMAND ${TEST_APPLICATION})
