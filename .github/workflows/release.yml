@@ -20,7 +20,7 @@ jobs:
       - run: cmake --build .
       - run: cmake --build . --target test
       - run: cmake --build . --target package
-      - run: ./allocator_and_map_tests      
+      - run: ./ip_print_tests      
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
