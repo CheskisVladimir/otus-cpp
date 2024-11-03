@@ -2,9 +2,8 @@
 #include <map>
 #include <iostream>
 
-#include "Allocator_lib/src/include/PoolAllolcator.h"
-#include "Allocator_lib/src/include/Container.h"
-#include "Allocator_lib/src/include/CustomList.h"
+#include "allocator_and_map_lib_folder/src/include/PoolAllolcator.h"
+#include "allocator_and_map_lib_folder/src/include/CustomList.h"
 
 using namespace container_ns;
 using namespace allocator_ns;
@@ -27,14 +26,6 @@ void print (const Map &map)
     }
 }
 
-template <typename Type, typename Allocator>
-void print (const Container<Type, Allocator> &container)
-{
-    for (size_t i = 0; i < container.size(); i++)
-    {
-        std::cout << container.at(i) << std::endl;
-    }
-}
 
 
 int main(int, char **)

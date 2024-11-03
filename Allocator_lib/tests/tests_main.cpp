@@ -11,16 +11,28 @@ TEST(allocator_tests, container)
     for (auto v : in_values)
         list.add(v);
 
+    std::cout << "A\n";
+
     std::vector<int> out_values;
+    std::cout << "Y\n";
     auto it1 = list.begin();
+    std::cout << "Z\n";
     it1++;
+    std::cout << "Zzzz\n";
     int val = it1;
+    std::cout << "it\n";
     auto e = list.end();
+    std::cout << "itq\n";
     for (auto it = list.begin(); it != list.end(); it++) 
     {
+        std::cout << "X\n";
+
         out_values.push_back(it);
     }
+
+    std::cout << "B\n";
     ASSERT_EQ(in_values, out_values);
+    std::cout << "C\n";
 }
 
 TEST(allocator_tests, allocator)
