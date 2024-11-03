@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.12)
 
-set(APPLICATION allocator_and_map)
+set(APPLICATION ip_print)
 
 set(LIBLARY ${APPLICATION}_library)
 set(LIBLARY_FOLDER ${APPLICATION}_lib_folder)
