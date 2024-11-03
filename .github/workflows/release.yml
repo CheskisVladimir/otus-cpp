@@ -3,7 +3,7 @@ name: 'C++ CI'
 on:
   push:
     branches:
-      - allocator_and_map
+      - Templates
       - feature/github_actions
 
 jobs:
@@ -38,6 +38,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./allocator_and_map-0.0.${{ github.run_number }}-Linux.deb
-          asset_name: allocator_and_map-0.0.${{ github.run_number }}-Linux.deb
+          asset_path: ./Templates-0.0.${{ github.run_number }}-Linux.deb
+          asset_name: Templates-0.0.${{ github.run_number }}-Linux.deb
           asset_content_type: application/vnd.debian.binary-package
