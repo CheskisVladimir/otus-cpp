@@ -19,7 +19,7 @@ jobs:
 
       - name: Generate documentation
         run: |
-          doxygen Doxyfile
+          doxygen Simple/Doxyfile
 
       - name: Commit documentation
         run: |
