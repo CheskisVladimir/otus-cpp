@@ -7,6 +7,7 @@
 #include <iostream>
 #include "main.h"
 
+/// Simple sum
 int asum(int a, int b)
 {
     return a + b;
