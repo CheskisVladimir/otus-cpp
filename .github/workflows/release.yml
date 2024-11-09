@@ -19,19 +19,11 @@ jobs:
 
       - name: Generate documentation
         run: |
-          doxygen Simple/Doxyfile
-
-      - name: Create release directory
-        run: |
-          mkdir -p releases/Small/doc
-
-      - name: Copy documentation to release directory
-        run: |
-          cp -r html/* releases/Small/doc/
+          doxygen Doxyfile
 
       - name: Commit documentation
         run: |
-          cd releases/Small/doc
+          cd doc
           git init
           git config --local user.name "GitHub Actions"
           git config --local user.email "actions@github.com"
