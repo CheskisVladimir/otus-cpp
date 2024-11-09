@@ -44,7 +44,7 @@ PROJECT_NUMBER         =
 # for a project that appears at the top of each page and should give viewer a
 # quick idea about the purpose of the project. Keep the description short.
 
-PROJECT_BRIEF          = "First Test"
+PROJECT_BRIEF          = "First Test ++"
 
 # With the PROJECT_LOGO tag one can specify a logo or an icon that is included
 # in the documentation. The maximum height of the logo should not exceed 55
@@ -2656,5 +2656,10 @@ GENERATE_LEGEND        = YES
 # The default value is: YES.
 
 DOT_CLEANUP            = YES
+RECURSIVE = YES
 
-EXTRACT_ALL = NO 
+
+EXTRACT_ALL = NO
+WARN_IF_DOCS_EMPTY  = NO
+GENERATE_TREEVIEW   = NO
+HIDE_UNDOC_MEMBERS = YES

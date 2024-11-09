@@ -1,4 +1,4 @@
-/*! \file structcmd.h
+/*! \file main.cpp
     \brief A Documented file.
     
     Details.
