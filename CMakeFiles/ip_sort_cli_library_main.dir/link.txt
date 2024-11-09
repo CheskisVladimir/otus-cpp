@@ -1,0 +1,2 @@
+/usr/bin/ar qc libip_sort_cli_library_main.a CMakeFiles/ip_sort_cli_library_main.dir/print_ip_folder/print_ip.cpp.o CMakeFiles/ip_sort_cli_library_main.dir/lib.cpp.o
+/usr/bin/ranlib libip_sort_cli_library_main.a

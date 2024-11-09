@@ -1,0 +1,2 @@
+/usr/bin/ar qc libip_print_library.a CMakeFiles/ip_print_library.dir/lib.cpp.o
+/usr/bin/ranlib libip_print_library.a

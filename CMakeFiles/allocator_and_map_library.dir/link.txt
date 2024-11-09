@@ -1,0 +1,2 @@
+/usr/bin/ar qc liballocator_and_map_library.a CMakeFiles/allocator_and_map_library.dir/lib.cpp.o
+/usr/bin/ranlib liballocator_and_map_library.a

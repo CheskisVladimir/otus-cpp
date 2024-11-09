@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/ip_sort_cli_tests.dir/print_ip_folder/tests_main.cpp.o -o ip_sort_cli_tests  libprint_ip_lib.a /usr/lib/x86_64-linux-gnu/libgtest.a libip_sort_cli_tests_lib.a 

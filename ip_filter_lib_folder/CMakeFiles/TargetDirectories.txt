@@ -1,0 +1,12 @@
+/home/volodechka/Cource/HW_1/otus-cpp/ip_filter/CMakeFiles/ip_library.dir
+/home/volodechka/Cource/HW_1/otus-cpp/ip_filter/CMakeFiles/ip_filter.dir
+/home/volodechka/Cource/HW_1/otus-cpp/ip_filter/CMakeFiles/runTests.dir
+/home/volodechka/Cource/HW_1/otus-cpp/ip_filter/CMakeFiles/package.dir
+/home/volodechka/Cource/HW_1/otus-cpp/ip_filter/CMakeFiles/package_source.dir
+/home/volodechka/Cource/HW_1/otus-cpp/ip_filter/CMakeFiles/test.dir
+/home/volodechka/Cource/HW_1/otus-cpp/ip_filter/CMakeFiles/edit_cache.dir
+/home/volodechka/Cource/HW_1/otus-cpp/ip_filter/CMakeFiles/rebuild_cache.dir
+/home/volodechka/Cource/HW_1/otus-cpp/ip_filter/CMakeFiles/list_install_components.dir
+/home/volodechka/Cource/HW_1/otus-cpp/ip_filter/CMakeFiles/install.dir
+/home/volodechka/Cource/HW_1/otus-cpp/ip_filter/CMakeFiles/install/local.dir
+/home/volodechka/Cource/HW_1/otus-cpp/ip_filter/CMakeFiles/install/strip.dir

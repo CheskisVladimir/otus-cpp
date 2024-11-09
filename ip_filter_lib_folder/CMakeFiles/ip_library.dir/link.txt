@@ -1,0 +1,2 @@
+/usr/bin/ar qc libip_library.a CMakeFiles/ip_library.dir/src/cpp/ip_io.cpp.o CMakeFiles/ip_library.dir/src/cpp/ip_lib.cpp.o CMakeFiles/ip_library.dir/src/cpp/lib_version.cpp.o
+/usr/bin/ranlib libip_library.a

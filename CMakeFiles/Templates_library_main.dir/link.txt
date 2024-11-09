@@ -1,0 +1,2 @@
+/usr/bin/ar qc libTemplates_library_main.a CMakeFiles/Templates_library_main.dir/Templates_lib_folder/lib_main.cpp.o CMakeFiles/Templates_library_main.dir/Templates_lib_folder/tests_main.cpp.o CMakeFiles/Templates_library_main.dir/lib.cpp.o
+/usr/bin/ranlib libTemplates_library_main.a

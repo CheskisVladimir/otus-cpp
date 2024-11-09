@@ -1,0 +1,2 @@
+/usr/bin/ar qc libAllocator_tests_lib.a CMakeFiles/Allocator_tests_lib.dir/Allocator_lib/tests/tests_main.cpp.o
+/usr/bin/ranlib libAllocator_tests_lib.a

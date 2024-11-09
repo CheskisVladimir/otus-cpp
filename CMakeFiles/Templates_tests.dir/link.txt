@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/Templates_tests.dir/Templates_lib_folder/tests_main.cpp.o -o Templates_tests  libTemplates_library.a /usr/lib/x86_64-linux-gnu/libgtest.a libTemplates_tests_lib.a 

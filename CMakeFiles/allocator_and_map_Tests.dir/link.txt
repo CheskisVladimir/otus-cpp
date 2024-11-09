@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/allocator_and_map_Tests.dir/allocator_and_map_lib_folder/tests/tests_main.cpp.o -o allocator_and_map_Tests  liballocator_and_map_library.a /usr/lib/x86_64-linux-gnu/libgtest.a 

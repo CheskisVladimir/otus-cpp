@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/Allocator.dir/main.cpp.o -o Allocator  libAllocator_library_main.a 

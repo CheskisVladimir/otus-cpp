@@ -1,0 +1,2 @@
+/usr/bin/ar qc liballocator_and_map_tests_lib.a CMakeFiles/allocator_and_map_tests_lib.dir/allocator_and_map_lib_folder/tests/tests_main.cpp.o
+/usr/bin/ranlib liballocator_and_map_tests_lib.a

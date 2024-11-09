@@ -1,0 +1,2 @@
+/usr/bin/ar qc libip_print_tests_lib.a CMakeFiles/ip_print_tests_lib.dir/ip_print_lib_folder/tests/tests_main.cpp.o
+/usr/bin/ranlib libip_print_tests_lib.a

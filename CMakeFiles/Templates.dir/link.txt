@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/Templates.dir/main.cpp.o -o Templates  libTemplates_library_main.a 

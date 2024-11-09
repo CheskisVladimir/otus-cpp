@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/ip_sort_cli.dir/main.cpp.o -o ip_sort_cli  libip_sort_cli_library_main.a 

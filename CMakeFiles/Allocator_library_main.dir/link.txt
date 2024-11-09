@@ -1,0 +1,2 @@
+/usr/bin/ar qc libAllocator_library_main.a CMakeFiles/Allocator_library_main.dir/lib.cpp.o
+/usr/bin/ranlib libAllocator_library_main.a

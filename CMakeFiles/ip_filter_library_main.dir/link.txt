@@ -1,0 +1,2 @@
+/usr/bin/ar qc libip_filter_library_main.a CMakeFiles/ip_filter_library_main.dir/ip_filter_lib_folder/src/cpp/ip_io.cpp.o CMakeFiles/ip_filter_library_main.dir/ip_filter_lib_folder/src/cpp/ip_lib.cpp.o CMakeFiles/ip_filter_library_main.dir/lib.cpp.o
+/usr/bin/ranlib libip_filter_library_main.a
