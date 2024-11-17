@@ -20,7 +20,6 @@ jobs:
       - name: Generate documentation
         run: |
           doxygen Simple/Doxyfile
-          working-directory: .
 
       - name: Commit documentation
         uses: peaceiris/actions-gh-pages@v3
