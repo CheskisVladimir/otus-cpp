@@ -5,18 +5,24 @@ set(PROJECT_VESRION 0.0.${PATCH_VERSION})
 
 set (APPLICATION MyApp) 
 set (APPLICATION_cli MyApp) 
+set (APPLICATION_lib MyApp_lib) 
 
 #project(${APPLICATION} VERSION ${PROJECT_VESRION})
-project(${APPLICATION}-${PROJECT_VESRION})
+project(${APPLICATION} VERSION ${PROJECT_VESRION})
 
 
 configure_file(version.h.in version.h)
 
-add_executable(${APPLICATION_cli} main.cpp lib.cpp)
+add_executable(${APPLICATION_cli} main.cpp)
+add_library(${APPLICATION_lib} lib.cpp)
 
-set_target_properties(${APPLICATION_cli} PROPERTIES
+set_target_properties(${APPLICATION_cli} ${APPLICATION_lib} PROPERTIES
     CXX_STANDARD 20    
     CXX_STANDARD_REQUIRED ON
+)
+
+target_link_libraries(${APPLICATION_cli} PRIVATE
+${APPLICATION_lib}
 )
 
 if (MSVC)
