@@ -20,21 +20,14 @@ jobs:
       - name: Generate documentation
         run: |
           doxygen Simple/Doxyfile
+          working-directory: .
 
       - name: Commit documentation
-        run: |
-          mkdir doc
-          cd doc
-          git init
-          git config --local user.name "GitHub Actions"
-          git config --local user.email "actions@github.com"
-          git add .
-          git commit -m "Update documentation [skip ci]"
-
-      - name: Push to GitHub
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          git remote add origin https://github.com/${{ github.repository }}.git
-          git push -u origin master --force
-
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./doc/html/
+          enable_jekyll: false
+          allow_empty_commit: false
+          force_orphan: true
+          publish_branch: gh-pages
