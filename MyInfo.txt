@@ -6,3 +6,5 @@ EXTRACT_ALL = NO
 WARN_IF_DOCS_EMPTY  = NO
 GENERATE_TREEVIEW   = NO
 HIDE_UNDOC_MEMBERS = YES
+
+https://cheskisvladimir.github.io/otus-cpp/
