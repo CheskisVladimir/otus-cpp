@@ -4,7 +4,7 @@ set(PATCH_VERSION "1" CACHE INTERNAL "Patch version")
 set(PROJECT_VESRION 0.0.${PATCH_VERSION})
 
 set (APPLICATION MyApp) 
-set (APPLICATION_cli MyApp_cli) 
+set (APPLICATION_cli MyApp) 
 
 project(${APPLICATION} VERSION ${PROJECT_VESRION})
 
