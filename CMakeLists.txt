@@ -5,7 +5,6 @@ set(PROJECT_VESRION 0.0.${PATCH_VERSION})
 
 set (APPLICATION MyApp) 
 set (APPLICATION_cli MyApp_cli) 
-set (APPLICATION MyApp_lib) 
 
 project(${APPLICATION} VERSION ${PROJECT_VESRION})
 
