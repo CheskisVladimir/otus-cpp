@@ -1,10 +1,10 @@
 on:
-    push:
-      branches:
-        - master #Branch
-        - feature/github_actions
-  
-  jobs:
+  push:
+    branches:
+      - master                #Branch
+      - feature/github_actions
+
+jobs:
     deploy:
       runs-on: ubuntu-latest
       permissions:
