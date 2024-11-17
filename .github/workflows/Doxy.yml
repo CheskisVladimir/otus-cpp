@@ -2,7 +2,7 @@ on:
     push:
       branches:
         - master #Branch
-    workflow_dispatch:
+        - feature/github_actions
   
   jobs:
     deploy:
