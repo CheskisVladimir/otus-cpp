@@ -1,7 +1,7 @@
 on:
   push:
     branches:
-      - master_1      #Branch
+      - master      #Branch
   workflow_dispatch:
 
 jobs:
