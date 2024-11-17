@@ -6,7 +6,8 @@ set(PROJECT_VESRION 0.0.${PATCH_VERSION})
 set (APPLICATION MyApp) 
 set (APPLICATION_cli MyApp) 
 
-project(${APPLICATION} VERSION ${PROJECT_VESRION})
+#project(${APPLICATION} VERSION ${PROJECT_VESRION})
+project(${APPLICATION}-${PROJECT_VESRION})
 
 
 configure_file(version.h.in version.h)
